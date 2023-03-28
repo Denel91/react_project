@@ -1,3 +1,10 @@
+import Col from "./Col";
+import TodoList from "./TodoList";
+
 export default function Main(props) {
-    return <div className="col-9 p-3">Main</div>
+    return (
+        <Col size={9}>
+            <TodoList/>
+        </Col>
+    );
 }

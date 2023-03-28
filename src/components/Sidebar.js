@@ -1,13 +1,18 @@
 import React from "react";
 import User from "./User";
+import ListNames from "./ListNames";
+import Col from "./Col";
 
 const customStyle = {
     boxShadow: "inset -1px 0 0 rgba(0, 0, 0, 0.1)"
 };
+
 export default function Sidebar({user: {name, image}}) {
     return (
-        <div className="col-3 p-3 bg-light vh-100 overflow-scroll" style={customStyle}>
+        <Col size={3} className="bg-light" style={customStyle}>
             <User name={name} image={image}/>
-        </div>
+            <hr/>
+            <ListNames/>
+        </Col>
     );
 }
