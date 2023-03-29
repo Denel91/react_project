@@ -1,20 +1,27 @@
-import Main from "./components/Main";
-import Sidebar from "./components/Sidebar";
+import Layout, {LeftCol, RightCol} from "./components/Layout";
+import User from "./components/User";
+import ListNames from "./components/ListNames";
+import TodoList from "./components/TodoList";
 
 const user = {
-  name: "Daniele",
-  image: "https://github.com/lifeisfoo.png",
+    id: 1,
+    name: "Daniele",
+    image: "https://github.com/lifeisfoo.png",
 };
 
 export default function App() {
-  return (
-      <div className="container-fluid">
-        <div className="row">
-          <Sidebar user={user} />
-          <Main />
-        </div>
-      </div>
-  );
+    return (
+        <Layout>
+            <LeftCol>
+                <User name={user.name} image={user.image}/>
+                <hr/>
+                <ListNames/>
+            </LeftCol>
+            <RightCol>
+                <TodoList/>
+            </RightCol>
+        </Layout>
+    );
 }
 
 
