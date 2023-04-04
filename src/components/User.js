@@ -14,9 +14,10 @@ export default function User({name, image}) {
     return (
         <div className="d-flex align-items-center text-black text-decoration-none py-1">
             <img className="rounded-circle me-2"
-                src={getImageOrDefaultURL(image)}
-                width="32"
-                height="32"/>
+                 alt="Profile_Images"
+                 src={getImageOrDefaultURL(image)}
+                 width="32"
+                 height="32"/>
             <strong>{name}</strong>
         </div>
     );
