@@ -1,5 +1,4 @@
 import {useState} from "react";
-import ListDeleteModal from "./ListDeleteModal";
 import TodoCreator from "./TodoCreator";
 import TodoList from "./TodoList";
 import DeleteButton from "./DeleteButton";
