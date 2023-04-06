@@ -1,13 +1,25 @@
+import {useState} from "react";
+import ListDeleteModal from "./ListDeleteModal";
 import TodoCreator from "./TodoCreator";
 import TodoList from "./TodoList";
+import DeleteButton from "./DeleteButton";
+import ReactModal from "react-modal";
+import DeleteModal from "./DeleteModal";
 
-export default function ListView({listName, todos, onTodoUpdate, onTodoDelete, onTodoCreate,}) {
+export default function ListView({list, todos, onTodoUpdate, onTodoDelete, onTodoCreate, onListDelete}) {
+    const [delModal, setDelModal] = useState(false)
     const notCompleted = todos.filter((t) => !t.done);
     const completed = todos.filter((t) => t.done);
 
     return (
         <>
-            <h2>{listName}</h2>
+            <div className="d-flex align-items-center position-relative">
+                <h2 className="flex-grow-1">{list.name}</h2>
+                <DeleteButton onClick={() => setDelModal(true)}/>
+            </div>
+            <ReactModal isOpen={delModal}>
+                <DeleteModal message={`Vuoi eliminare l'elenco "${list.name}" con ${todos.length} attività?`} onDelete={() => onListDelete(list.id)} onCancel={() => setDelModal(false)}/>
+            </ReactModal>
             <TodoList
                 todos={notCompleted}
                 onTodoUpdate={onTodoUpdate}

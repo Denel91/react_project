@@ -1,15 +1,15 @@
-import React, { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import "bootstrap/dist/css/bootstrap.css";
 import "./style.css";
-
 import App from './App';
+import ReactModal from "react-modal";
 
-const rootElement = document.getElementById('root');
-const root = createRoot(rootElement);
+const rootId = "root";
+ReactModal.setAppElement(`#${rootId}`);
+ReactModal.defaultStyles.content.background = "none";
+ReactModal.defaultStyles.content.border = "none";
 
-root.render(
-    <StrictMode>
-        <App />
-    </StrictMode>
-);
+const root = ReactDOM.createRoot(document.getElementById(rootId));
+
+root.render(<App/>);
