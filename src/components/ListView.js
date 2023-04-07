@@ -4,8 +4,9 @@ import TodoList from "./TodoList";
 import DeleteButton from "./DeleteButton";
 import ReactModal from "react-modal";
 import DeleteModal from "./DeleteModal";
+import EditableText from "./EditableText";
 
-export default function ListView({list, todos, onTodoUpdate, onTodoDelete, onTodoCreate, onListDelete}) {
+export default function ListView({list, todos, onTodoUpdate, onTodoDelete, onTodoCreate, onListDelete, onListNameUpdate}) {
     const [delModal, setDelModal] = useState(false)
     const notCompleted = todos.filter((t) => !t.done);
     const completed = todos.filter((t) => t.done);
@@ -13,7 +14,12 @@ export default function ListView({list, todos, onTodoUpdate, onTodoDelete, onTod
     return (
         <>
             <div className="d-flex align-items-center position-relative">
-                <h2 className="flex-grow-1">{list.name}</h2>
+                <EditableText
+                    className="h2 flex-grow-1 border-0 mx-2 py-1"
+                    initialText={list.name}
+                    onEditEnd={(name) => onListNameUpdate(list.id, name)}
+                    key={list.id}
+                />
                 <DeleteButton onClick={() => setDelModal(true)}/>
             </div>
             <ReactModal isOpen={delModal}>

@@ -97,6 +97,13 @@ export default function App() {
         setListIdx(-1);
     };
 
+    const handleUpdateListName = (id, name) => {
+        const listIdx = allLists.findIndex((l) => l.id === id);
+        const tmpLists = [...allLists];
+        tmpLists[listIdx].name = name;
+        setAllLists(tmpLists);
+    };
+
     return (
         <Layout>
             <LeftCol>
@@ -118,6 +125,7 @@ export default function App() {
                         onTodoDelete={handleDeleteTodo}
                         onTodoUpdate={handleUpdateTodo}
                         onListDelete={handleDeleteList}
+                        onListNameUpdate={handleUpdateListName}
                     />
                 )}
             </RightCol>
